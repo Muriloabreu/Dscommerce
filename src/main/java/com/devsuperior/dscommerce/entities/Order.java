@@ -1,6 +1,7 @@
 package com.devsuperior.dscommerce.entities;
 
 import java.time.Instant;
+import java.util.Objects;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -37,13 +38,16 @@ public class Order {
 		
 	}
 
-	public Order(Long id, Instant moment, OrderStatus status, User client) {
-		
+	
+	public Order(Long id, Instant moment, OrderStatus status, User client, Payment payment) {
 		this.id = id;
 		this.moment = moment;
 		this.status = status;
 		this.client = client;
+		this.payment = payment;
 	}
+
+
 
 	//Métodos Acessores
 	public Long getId() {
@@ -76,6 +80,32 @@ public class Order {
 
 	public void setClient(User client) {
 		this.client = client;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", moment=" + moment + ", status=" + status + ", client=" + client + ", payment="
+				+ payment + "]";
+	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Order other = (Order) obj;
+		return Objects.equals(id, other.id);
 	}
 	
 	
