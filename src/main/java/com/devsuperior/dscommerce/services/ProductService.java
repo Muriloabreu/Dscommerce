@@ -21,6 +21,9 @@ public class ProductService {
 	@Transactional(readOnly = true)
 	public ProductDTO findById(Long id) {
 		
+		//Product product = productRepository.findById(id).get();
+		//return new ProductDTO(product);
+		
 		Optional<Product> result = productRepository.findById(id);
 		
 		Product product = result.get();
