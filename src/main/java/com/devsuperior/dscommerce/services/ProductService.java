@@ -21,15 +21,11 @@ public class ProductService {
 	
 	//Método para retornar um Product
 	@Transactional(readOnly = true)
-	public ProductDTO findById(Long id) {
-		
+	public ProductDTO findById(Long id) {		
 		//Product product = productRepository.findById(id).get();
-		//return new ProductDTO(product);
-		
-		Optional<Product> result = productRepository.findById(id);
-		
-		Product product = result.get();
-		
+		//return new ProductDTO(product);		
+		Optional<Product> result = productRepository.findById(id);		
+		Product product = result.get();			
 		ProductDTO dto = new ProductDTO(product);
 		
 		return dto;
@@ -66,6 +62,11 @@ public class ProductService {
 			entity = productRepository.save(entity);
 			
 			return new ProductDTO(entity);			
+		}
+		
+		@Transactional
+		public void delete(Long id) {		
+			productRepository.deleteById(id);			
 		}
 
 		//Metodo auxiliar
