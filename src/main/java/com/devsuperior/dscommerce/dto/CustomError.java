@@ -4,13 +4,13 @@ import java.time.Instant;
 
 public class CustomError {
 	
-	private String timestamp;
-	private Instant status;
+	private Instant timestamp;
+	private Integer status;
 	private String error;
 	private String path;
 	
 	
-	public CustomError(String timestamp, Instant status, String error, String path) {
+	public CustomError(Instant timestamp, Integer status, String error, String path) {
 		this.timestamp = timestamp;
 		this.status = status;
 		this.error = error;
@@ -18,10 +18,10 @@ public class CustomError {
 	}
 	
 	
-	public String getTimestamp() {
+	public Instant getTimestamp() {
 		return timestamp;
 	}
-	public Instant getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 	public String getError() {
